@@ -48,51 +48,51 @@ class BackgroundWidget(Widget):
             for i in range(3):
                 Ellipse(pos=(self.width * 0.4 + i * 10, self.height * 0.5), size=(5, 2))
 
-# class FoodDecorationWidget(Widget):
-#     def __init__(self, **kwargs):
-#         super(FoodDecorationWidget, self).__init__(**kwargs)
-#         self.bind(size=self.update_canvas)
-#         self.bind(pos=self.update_canvas)
-#         self.update_canvas()
+class FoodDecorationWidget(Widget):
+    def __init__(self, **kwargs):
+        super(FoodDecorationWidget, self).__init__(**kwargs)
+        self.bind(size=self.update_canvas)
+        self.bind(pos=self.update_canvas)
+        self.update_canvas()
         
-#     def update_canvas(self, *args):
-#         self.canvas.clear()
-#         with self.canvas:
-#             # Noodle bowl
-#             Color(0.6, 0.4, 0.2, 1)  # Brown for bowl
-#             Ellipse(pos=(self.width * 0.7, self.height * 0.6), size=(self.width * 0.25, self.height * 0.15))
+    def update_canvas(self, *args):
+        self.canvas.clear()
+        with self.canvas:
+            # Noodle bowl
+            Color(0.6, 0.4, 0.2, 1)  # Brown for bowl
+            Ellipse(pos=(self.width * 0.7, self.height * 0.6), size=(self.width * 0.25, self.height * 0.15))
             
-#             Color(1, 0.7, 0.3, 1)  # Orange/yellow for noodles
-#             Ellipse(pos=(self.width * 0.72, self.height * 0.62), size=(self.width * 0.21, self.height * 0.12))
+            Color(1, 0.7, 0.3, 1)  # Orange/yellow for noodles
+            Ellipse(pos=(self.width * 0.72, self.height * 0.62), size=(self.width * 0.21, self.height * 0.12))
             
-#             # Small green bits for veggies in noodles
-#             Color(0.4, 0.7, 0.3, 1)  # Green
-#             for i in range(5):
-#                 x = self.width * (0.75 + 0.03 * (i % 3))
-#                 y = self.height * (0.64 + 0.01 * (i % 2))
-#                 Ellipse(pos=(x, y), size=(5, 7))
+            # Small green bits for veggies in noodles
+            Color(0.4, 0.7, 0.3, 1)  # Green
+            for i in range(5):
+                x = self.width * (0.75 + 0.03 * (i % 3))
+                y = self.height * (0.64 + 0.01 * (i % 2))
+                Ellipse(pos=(x, y), size=(5, 7))
             
-#             # Orange food items (like the items in the plate in your image)
-#             Color(0.6, 0.7, 0.3, 1)  # Green circle for plate
-#             Ellipse(pos=(self.width * 0.65, self.height * 0.4), size=(self.width * 0.15, self.height * 0.15))
+            # Orange food items (like the items in the plate in your image)
+            Color(0.6, 0.7, 0.3, 1)  # Green circle for plate
+            Ellipse(pos=(self.width * 0.65, self.height * 0.4), size=(self.width * 0.15, self.height * 0.15))
             
-#             Color(1, 0.6, 0.2, 1)  # Orange for food
-#             Ellipse(pos=(self.width * 0.67, self.height * 0.42), size=(self.width * 0.11, self.height * 0.11))
+            Color(1, 0.6, 0.2, 1)  # Orange for food
+            Ellipse(pos=(self.width * 0.67, self.height * 0.42), size=(self.width * 0.11, self.height * 0.11))
             
-#             # Green bits on orange food
-#             Color(0.4, 0.7, 0.3, 1)  # Green
-#             for i in range(4):
-#                 x = self.width * (0.69 + 0.03 * (i % 2))
-#                 y = self.height * (0.45 + 0.01 * (i % 2))
-#                 Ellipse(pos=(x, y), size=(3, 5))
+            # Green bits on orange food
+            Color(0.4, 0.7, 0.3, 1)  # Green
+            for i in range(4):
+                x = self.width * (0.69 + 0.03 * (i % 2))
+                y = self.height * (0.45 + 0.01 * (i % 2))
+                Ellipse(pos=(x, y), size=(3, 5))
             
-#             # Green leaf at right bottom
-#             Color(0.4, 0.7, 0.3, 1)  # Green
-#             Ellipse(pos=(self.width * 0.85, self.height * 0.1), size=(self.width * 0.15, self.height * 0.2))
+            # Green leaf at right bottom
+            Color(0.4, 0.7, 0.3, 1)  # Green
+            Ellipse(pos=(self.width * 0.85, self.height * 0.1), size=(self.width * 0.15, self.height * 0.2))
             
-#             # Leaf details
-#             Color(0.3, 0.6, 0.2, 1)  # Darker green
-#             Ellipse(pos=(self.width * 0.88, self.height * 0.15), size=(self.width * 0.08, self.height * 0.02))
+            # Leaf details
+            Color(0.3, 0.6, 0.2, 1)  # Darker green
+            Ellipse(pos=(self.width * 0.88, self.height * 0.15), size=(self.width * 0.08, self.height * 0.02))
 
 class GenderSelectionScreen(Screen):
     def __init__(self, **kwargs):
