@@ -30,7 +30,7 @@ Builder.load_string('''
         RoundedRectangle:
             pos: self.pos
             size: self.size
-            radius: [20, 20, 20, 20]  # 20dp radius for all corners
+            radius: [40, 40, 40, 40]  # 20dp radius for all corners
 
 <CustomSlider@Slider>:
     cursor_size: 30, 30
@@ -69,6 +69,7 @@ class GenderSelectionScreen(Screen):
         self.male_btn = Builder.load_string('''
 RoundedButton:
     text: "Male"
+    font_size: 32                                        
     background_color: 0.92, 0.79, 0.66,.3   # Brown
 ''')
 
@@ -80,6 +81,7 @@ RoundedButton:
 RoundedButton:
     text: "Female"
     background_color: 0.92, 0.79, 0.66, .3  # Brown
+    font_size: 32                                          
 ''')
         self.female_btn.bind(on_release=lambda x: self.select_gender('female'))
         buttons_layout.add_widget(self.female_btn)
@@ -163,6 +165,10 @@ RoundedButton:
                                        
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
                                        
+    size_hint: None, None  # Disable size hinting to use explicit size
+                                       
+    size: 200, 40  # Set explicit width and height in pixels
+                                       
 ''')
         back_btn.bind(on_release=self.go_back)
         buttons.add_widget(back_btn)
@@ -172,6 +178,11 @@ RoundedButton:
     text: "Next"
     font_size: 20
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
+                                       
+    size_hint: None, None  # Disable size hinting to use explicit size
+                                       
+    size: 200, 40  # Set explicit width and height in pixels
+                                       
 ''')
         next_btn.bind(on_release=self.go_next)
         buttons.add_widget(next_btn)
@@ -261,6 +272,10 @@ RoundedButton:
     text: "Back"
     font_size: 20
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
+
+    size_hint: None, None  # Disable size hinting to use explicit size
+                                       
+    size: 200, 40  # Set explicit width and height in pixels                                                                       
 ''')
         back_btn.bind(on_release=self.go_back)
         buttons.add_widget(back_btn)
@@ -270,6 +285,10 @@ RoundedButton:
     text: "Next"
     font_size: 20
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
+                                       
+    size_hint: None, None  # Disable size hinting to use explicit size
+                                       
+    size: 200, 40  # Set explicit width and height in pixels                                   
 ''')
         next_btn.bind(on_release=self.go_next)
         buttons.add_widget(next_btn)
@@ -291,6 +310,7 @@ RoundedButton:
         print(f"Weight entered: {int(self.weight_slider.value)} kg")
         self.manager.transition = SlideTransition(direction='left')
         self.manager.current = 'height'
+        
 
 class HeightScreen(Screen):
     def __init__(self, **kwargs):
@@ -359,6 +379,11 @@ RoundedButton:
     text: "Back"
     font_size: 20
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
+
+    size_hint: None, None  # Disable size hinting to use explicit size
+                                       
+    size: 200, 40  # Set explicit width and height in pixels                                   
+
 ''')
         back_btn.bind(on_release=self.go_back)
         buttons.add_widget(back_btn)
@@ -368,6 +393,10 @@ RoundedButton:
     text: "Next"
     font_size: 20
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
+                                       
+    size_hint: None, None  # Disable size hinting to use explicit size
+                                       
+    size: 200, 40  # Set explicit width and height in pixels                                   
 ''')
         next_btn.bind(on_release=self.go_next)
         buttons.add_widget(next_btn)
@@ -388,6 +417,84 @@ RoundedButton:
         app.user_data['height'] = int(self.height_slider.value)
         print(f"Height entered: {int(self.height_slider.value)} cm")
         self.manager.transition = SlideTransition(direction='left')
+        self.manager.current = 'summary'
+
+class BMIScreen(Screen):
+    def __init__(self, **kwargs):
+        super(BMIScreen, self).__init__(**kwargs)
+        
+        # Main layout
+        main_layout = FloatLayout()
+        
+        # Add background image
+        background = Image(
+            source='Slide 16_9 - 1 (1).jpg',  # Replace with your image path
+            allow_stretch=True,
+            keep_ratio=False,
+            size_hint=(1, 1))
+        main_layout.add_widget(background)
+        
+        # Create content layout
+        content = BoxLayout(
+            orientation='vertical',
+            spacing=20,
+            size_hint=(0.7, 0.6),
+            pos_hint={'center_x': 0.5, 'center_y': 0.5}
+        )
+        
+        # Title
+        title = Label(
+            text="Your BMI",
+            font_size=28,
+            color=(0.4, 0.7, 0.3, 1),  # Green text
+            size_hint_y=0.2
+        )
+        content.add_widget(title)
+        
+        # BMI display label
+        self.bmi_label = Label(
+            text="BMI: ",
+            font_size=24,
+            color=(0.4, 0.7, 0.3, 1),  # Green text
+            size_hint_y=0.3
+        )
+        content.add_widget(self.bmi_label)
+        
+        # Buttons
+        buttons = BoxLayout(
+            orientation='horizontal',
+            spacing=20,
+            size_hint_y=0.2
+        )
+        
+        back_btn = Builder.load_string('''
+RoundedButton:
+    text: "Back"
+    font_size: 20
+    background_color: 0.95, 0.85, 0.7, 1  # Light beige
+    size_hint: None, None  # Disable size hinting to use explicit size
+    size: 200, 40  # Set explicit width and height in pixels
+''')
+        back_btn.bind(on_release=self.go_back)
+        buttons.add_widget(back_btn)
+        
+        content.add_widget(buttons)
+        main_layout.add_widget(content)
+        self.add_widget(main_layout)
+    
+    def on_pre_enter(self, *args):
+        # Calculate BMI when the screen is about to be displayed
+        app = App.get_running_app()
+        weight = app.user_data.get('weight', 0)
+        height = app.user_data.get('height', 0) / 100  # Convert height to meters
+        if weight > 0 and height > 0:
+            bmi = weight / (height ** 2)
+            self.bmi_label.text = f"BMI: {bmi:.2f}"
+        else:
+            self.bmi_label.text = "BMI: Invalid data"
+    
+    def go_back(self, instance):
+        self.manager.transition = SlideTransition(direction='right')
         self.manager.current = 'summary'
 
 class SummaryScreen(Screen):
@@ -481,18 +588,22 @@ RoundedButton:
     text: "Edit Information"
     font_size: 20
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
+    size_hint: None, None  # Disable size hinting to use explicit size
+    size: 200, 40  # Set explicit width and height in pixels
 ''')
         back_btn.bind(on_release=self.go_back)
         buttons.add_widget(back_btn)
         
-        finish_btn = Builder.load_string('''
+        bmi_btn = Builder.load_string('''
 RoundedButton:
-    text: "Finish"
+    text: "Calculate BMI"
     font_size: 20
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
+    size_hint: None, None  # Disable size hinting to use explicit size
+    size: 200, 40  # Set explicit width and height in pixels
 ''')
-        finish_btn.bind(on_release=self.finish)
-        buttons.add_widget(finish_btn)
+        bmi_btn.bind(on_release=self.go_to_bmi)
+        buttons.add_widget(bmi_btn)
         
         content.add_widget(buttons)
         main_layout.add_widget(content)
@@ -509,6 +620,10 @@ RoundedButton:
         self.manager.transition = SlideTransition(direction='right')
         self.manager.current = 'height'
     
+    def go_to_bmi(self, instance):
+        self.manager.transition = SlideTransition(direction='left')
+        self.manager.current = 'bmi'
+    
     def finish(self, instance):
         app = App.get_running_app()
         print("Data collection complete!")
@@ -518,7 +633,6 @@ RoundedButton:
         
         # Reset data
         app.user_data = {}
-
 class FoodSelectionApp(App):
     def __init__(self, **kwargs):
         super(FoodSelectionApp, self).__init__(**kwargs)
@@ -534,6 +648,7 @@ class FoodSelectionApp(App):
         sm.add_widget(WeightScreen(name='weight'))
         sm.add_widget(HeightScreen(name='height'))
         sm.add_widget(SummaryScreen(name='summary'))
+        sm.add_widget(BMIScreen(name='bmi'))  # Add the BMI screen
         
         return sm
 
