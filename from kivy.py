@@ -69,6 +69,7 @@ class GenderSelectionScreen(Screen):
         self.male_btn = Builder.load_string('''
 RoundedButton:
     text: "Male"
+    font_size: 32                                        
     background_color: 0.92, 0.79, 0.66,.3   # Brown
 ''')
 
@@ -80,6 +81,7 @@ RoundedButton:
 RoundedButton:
     text: "Female"
     background_color: 0.92, 0.79, 0.66, .3  # Brown
+    font_size: 32                                          
 ''')
         self.female_btn.bind(on_release=lambda x: self.select_gender('female'))
         buttons_layout.add_widget(self.female_btn)
@@ -163,6 +165,10 @@ RoundedButton:
                                        
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
                                        
+    size_hint: None, None  # Disable size hinting to use explicit size
+                                       
+    size: 200, 40  # Set explicit width and height in pixels
+                                       
 ''')
         back_btn.bind(on_release=self.go_back)
         buttons.add_widget(back_btn)
@@ -172,6 +178,11 @@ RoundedButton:
     text: "Next"
     font_size: 20
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
+                                       
+    size_hint: None, None  # Disable size hinting to use explicit size
+                                       
+    size: 200, 40  # Set explicit width and height in pixels
+                                       
 ''')
         next_btn.bind(on_release=self.go_next)
         buttons.add_widget(next_btn)
@@ -261,6 +272,10 @@ RoundedButton:
     text: "Back"
     font_size: 20
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
+
+    size_hint: None, None  # Disable size hinting to use explicit size
+                                       
+    size: 200, 40  # Set explicit width and height in pixels                                                                       
 ''')
         back_btn.bind(on_release=self.go_back)
         buttons.add_widget(back_btn)
@@ -270,6 +285,10 @@ RoundedButton:
     text: "Next"
     font_size: 20
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
+                                       
+    size_hint: None, None  # Disable size hinting to use explicit size
+                                       
+    size: 200, 40  # Set explicit width and height in pixels                                   
 ''')
         next_btn.bind(on_release=self.go_next)
         buttons.add_widget(next_btn)
@@ -359,6 +378,11 @@ RoundedButton:
     text: "Back"
     font_size: 20
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
+
+    size_hint: None, None  # Disable size hinting to use explicit size
+                                       
+    size: 200, 40  # Set explicit width and height in pixels                                   
+
 ''')
         back_btn.bind(on_release=self.go_back)
         buttons.add_widget(back_btn)
@@ -368,6 +392,10 @@ RoundedButton:
     text: "Next"
     font_size: 20
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
+                                       
+    size_hint: None, None  # Disable size hinting to use explicit size
+                                       
+    size: 200, 40  # Set explicit width and height in pixels                                   
 ''')
         next_btn.bind(on_release=self.go_next)
         buttons.add_widget(next_btn)
@@ -481,6 +509,11 @@ RoundedButton:
     text: "Edit Information"
     font_size: 20
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
+                                       
+    size_hint: None, None  # Disable size hinting to use explicit size
+                                       
+    size: 200, 40  # Set explicit width and height in pixels
+                                                                          
 ''')
         back_btn.bind(on_release=self.go_back)
         buttons.add_widget(back_btn)
@@ -490,6 +523,10 @@ RoundedButton:
     text: "Finish"
     font_size: 20
     background_color: 0.95, 0.85, 0.7, 1  # Light beige
+                                         
+    size_hint: None, None  # Disable size hinting to use explicit size
+                                       
+    size: 200, 40  # Set explicit width and height in pixels                                     
 ''')
         finish_btn.bind(on_release=self.finish)
         buttons.add_widget(finish_btn)
